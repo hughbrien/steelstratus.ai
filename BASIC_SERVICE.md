@@ -6,3 +6,8 @@ Create a REST API Service in Python that includes the following end points
 - @app.route('/version',  methods=['GET'])
 - @app.route('/healthz/live')
 - @app.route('/healthz/ready')
+
+
+Run a test hourly 
+
+Deploy it to EC2 Server 
