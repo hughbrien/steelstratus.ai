@@ -100,5 +100,5 @@ def observer():
     return jsonify({'analysis': result}), 200
 
 if __name__ == '__main__':
-    print('Starting Observer Service on port 5001...')
+    print('Starting Observer Service on port 5002...')
     app.run(host='0.0.0.0', port=5001, debug=True) 
