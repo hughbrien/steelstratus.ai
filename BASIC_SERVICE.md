@@ -8,6 +8,12 @@ Create a REST API Service in Python that includes the following end points
 - @app.route('/healthz/ready')
 
 
-Run a test hourly 
+Create a new __version__  file 
 
-Deploy it to EC2 Server 
+Create a test suite
+
+Deploy command should : 
+zip up the current folder 
+scp hbrien@192.168.1.166
+
+
