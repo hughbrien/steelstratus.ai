@@ -99,8 +99,7 @@ def health_live():
 def health_ready():
     """Readiness health check endpoint"""
     return jsonify({
-        'status': 'ready',
-        'timestamp': datetime.now().isoformat()
+        'status': 'ready'
     }), 200
 
 @app.errorhandler(404)
