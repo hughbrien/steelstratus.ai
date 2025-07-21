@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from datetime import datetime, timedelta
 from collections import defaultdict
 import math
+import sys
+from .__version__ import __version__
 
 app = Flask(__name__)
 
@@ -98,6 +100,16 @@ def observer():
         result[tf] = tf_scores
 
     return jsonify({'analysis': result}), 200
+
+@app.route('/version', methods=['GET'])
+def version():
+    """Return version information"""
+    return jsonify({
+        'version': __version__,
+        'name': 'Observer Service',
+        'python_version': sys.version,
+        'timestamp': datetime.now().isoformat()
+    }), 200
 
 if __name__ == '__main__':
     print('Starting Observer Service on port 5002...')

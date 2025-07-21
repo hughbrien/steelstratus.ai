@@ -8,7 +8,7 @@ Create a REST API Service in Python that includes the following end points
 - @app.route('/healthz/ready')
 
 
-Create a new __version__  file 
+Create a new __version__.py file 
 
 Create a test suite
 

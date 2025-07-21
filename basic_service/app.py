@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from datetime import datetime, timedelta
 import json
 import os
+import sys
+from .__version__ import __version__
 
 app = Flask(__name__)
 
@@ -81,9 +83,9 @@ def last_request():
 def version():
     """Return version information"""
     return jsonify({
-        'version': '1.0.0',
-        'name': 'Simple REST API Service',
-        'python_version': os.sys.version,
+        'version': __version__,
+        'name': 'Basic Service',
+        'python_version': sys.version,
         'timestamp': datetime.now().isoformat()
     }), 200
 
