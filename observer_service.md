@@ -1,8 +1,13 @@
-- Steel Stratus
-- Observability Index / ApDex
-- First Iteration should REST API services 
-- I want to create a solution that creates a score between 1 and 100
-- Intial implementation would simple grade a REST Service with a score between 1 and 100
-- The score should be based upon Golden Signals : Response Time, Throughput, Error Rate and Compute Density
-- It should compute the score every hour, day, week, month year.
-  -- Include options for Hour of the Day and Day of the Week. 
+# Create an Observer Service 
+Write the service in Python
+This service should be able to analyze a REST API service and endpoint. 
+
+@app.route('/analyze', methods=['GET','POST'])
+
+Intial implementation would  grade a REST Service with a score between 1 and 100
+The score should be based upon the following : 
+  - Golden Signals : Response Time, Throughput, Error Rate and Compute Density
+  - High Load vs Low Load.  High Load would be greater than 1000 Requests per Hour
+  - Fast vs Slow Response Time.  Avearge Response Time Greater than 2000 milliseconds 
+
+It should compute the score for  every hour, day, week, month year,  Hour of the Day and Day of the Week.
