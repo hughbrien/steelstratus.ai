@@ -39,10 +39,32 @@ def webhook():
     
     elif request.method == 'POST':
         data = request.get_json() if request.is_json else request.get_data(as_text=True)
-        return jsonify({
-            'message': 'Webhook POST request received',
+        
+        # Create the webhook data entry to append to file
+        webhook_entry = {
             'timestamp': datetime.now().isoformat(),
-            'received_data': data
+            'method': request.method,
+            'url': request.url,
+            'headers': dict(request.headers),
+            'data': data,
+            'remote_addr': request.remote_addr
+        }
+        
+        # Append JSON data to local file
+        try:
+            with open('webhook_data.json', 'a') as f:
+                f.write(json.dumps(webhook_entry) + '\n')
+        except Exception as e:
+            return jsonify({
+                'error': 'Failed to write to file',
+                'message': str(e)
+            }), 500
+        
+        return jsonify({
+            'message': 'Webhook POST request received and logged',
+            'timestamp': datetime.now().isoformat(),
+            'received_data': data,
+            'logged_to_file': 'webhook_data.json'
         }), 200
 
 @app.route('/lastrequest', methods=['GET'])
