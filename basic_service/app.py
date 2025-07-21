@@ -225,5 +225,5 @@ def internal_error(error):
 # Basic Service: Example REST API with webhook and health endpoints
 # Run with: python app.py
 if __name__ == '__main__':
-    print('Starting Basic Service on port 5000...')
+    print('Starting Basic Service on port 5001...')
     app.run(host='0.0.0.0', port=5000, debug=True)
