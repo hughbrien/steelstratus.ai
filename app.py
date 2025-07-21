@@ -91,8 +91,7 @@ def version():
 def health_live():
     """Liveness health check endpoint"""
     return jsonify({
-        'status': 'alive',
-        'timestamp': datetime.now().isoformat()
+        'status': 'live'
     }), 200
 
 @app.route('/healthz/ready')
