@@ -1,10 +1,12 @@
 # steelstratus.ai
 steelstratus.ai
 
-- Create a Steel Stratus Website
-- Available Services
-  -- Observability
-  -- Performance
-  -- Application Security
-- Management
-  -- Hugh Brien
+- Steel Stratus
+- Observability Index / ApDex
+- First Iteration should REST API services 
+- I want to create a solution that creates a score between 1 and 100
+- Intial implementation would simple grade a REST Service with a score between 1 and 100
+- The score should be based upon Golden Signals : Response Time, Throughput, Error Rate and Compute Density
+- It should compute the score every hour, day, week, month year.
+  -- Include options for Hour of the Day and Day of the Week. 
+
