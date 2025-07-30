@@ -4,6 +4,14 @@ Create an outstanding website for SteelStratus.com.  The current version : https
 
 Create a website with the following : 
 
-Find profiles for Hugh Brien and Darrell Dunn 
+Find profiles for 
+- Hugh Brien - https://www.linkedin.com/in/hughbrien/
+- Mike Oberlin - https://www.linkedin.com/in/mike-oberlin-0a8777/
+- Darrell Dunn - https://www.linkedin.com/in/jdarrelldunn/ 
+- Henry Campbell - https://www.linkedin.com/in/henrycampbell/
+
+
+
+
 
 
