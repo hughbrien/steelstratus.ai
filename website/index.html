@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steel Stratus</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f7fa; color: #222; margin: 0; }
+        header { background: #1a2233; color: #fff; padding: 2rem 1rem; text-align: center; }
+        main { max-width: 900px; margin: 2rem auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 2rem; }
+        h1 { margin-top: 0; }
+        .profiles { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+        .profile { background: #f0f4f8; border-radius: 8px; padding: 1.5rem; flex: 1 1 250px; min-width: 220px; box-shadow: 0 1px 4px #0001; text-align: center; }
+        .profile img { border-radius: 50%; width: 90px; height: 90px; object-fit: cover; margin-bottom: 1rem; }
+        @media (max-width: 600px) { .profiles { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Steel Stratus</h1>
+        <p>Cloud Solutions for Modern Business</p>
+    </header>
+    <main>
+        <section>
+            <h2>About Steel Stratus</h2>
+            <p>Steel Stratus delivers robust, scalable, and secure cloud solutions tailored for your business. Our team brings decades of experience in cloud architecture, automation, and digital transformation.</p>
+        </section>
+        <section>
+            <h2>Our Team</h2>
+            <div class="profiles">
+                <div class="profile" id="hugh-profile">
+                    <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="Hugh Brien">
+                    <h3>Hugh Brien</h3>
+                    <p>Co-Founder & Cloud Architect</p>
+                    <div class="bio"></div>
+                </div>
+                <div class="profile" id="darrell-profile">
+                    <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="Darrell Dunn">
+                    <h3>Darrell Dunn</h3>
+                    <p>Co-Founder & Solutions Engineer</p>
+                    <div class="bio"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html> 
