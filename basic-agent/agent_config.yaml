@@ -1,0 +1,106 @@
+# Agentic Agent Configuration
+
+# MCP Server configurations
+mcp_servers:
+  filesystem:
+    url: "http://localhost:8001"
+    enabled: true
+    timeout: 30
+    retry_attempts: 3
+    
+  git:
+    url: "http://localhost:8002"
+    enabled: true
+    timeout: 30
+    retry_attempts: 3
+    
+  web_search:
+    url: "http://localhost:8003"
+    enabled: true
+    timeout: 30
+    retry_attempts: 3
+    
+  github:
+    url: "https://api.githubcopilot.com/mcp/"
+    enabled: true
+    timeout: 30
+    retry_attempts: 3
+    # Optional: Add your GitHub API key if needed
+    # api_key: "your_github_api_key_here"
+    
+  graph:
+    url: "http://localhost:8004"
+    enabled: true
+    timeout: 30
+    retry_attempts: 3
+    # Optional: Add your Graph database API key if needed
+    # api_key: "your_graph_db_api_key_here"
+    
+  database:
+    url: "http://localhost:8004"
+    enabled: false
+    timeout: 30
+    retry_attempts: 3
+    
+  api:
+    url: "http://localhost:8005"
+    enabled: false
+    timeout: 30
+    retry_attempts: 3
+    
+  code_execution:
+    url: "http://localhost:8006"
+    enabled: false
+    timeout: 60
+    retry_attempts: 3
+    
+  documentation:
+    url: "http://localhost:8007"
+    enabled: false
+    timeout: 30
+    retry_attempts: 3
+
+# Agent configuration
+agent:
+  max_concurrent_tasks: 5
+  task_timeout: 300  # seconds
+  memory_size: 1000  # number of tasks to remember
+  learning_enabled: true
+  auto_retry_failed_tasks: true
+  max_retry_attempts: 3
+  
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "agentic_agent.log"
+  max_file_size: "10MB"
+  backup_count: 5
+
+# Security settings
+security:
+  enable_ssl_verification: true
+  api_key_required: false
+  rate_limiting_enabled: true
+  max_requests_per_minute: 60
+
+# Performance settings
+performance:
+  connection_pool_size: 10
+  request_timeout: 30
+  enable_compression: true
+  cache_enabled: true
+  cache_ttl: 3600  # seconds
+
+# Default goals and preferences
+defaults:
+  goals:
+    - "Improve task execution efficiency"
+    - "Learn from successful patterns"
+    - "Maintain system stability"
+    
+  preferences:
+    task_priority: "MEDIUM"
+    preferred_mcp_servers: ["filesystem", "git", "web_search"]
+    auto_cleanup_old_tasks: true
+    cleanup_interval_hours: 24 
