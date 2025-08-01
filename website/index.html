@@ -3,46 +3,564 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steel Stratus</title>
+    <title>SteelStratus - Observability & Platform Engineering Experts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f7fa; color: #222; margin: 0; }
-        header { background: #1a2233; color: #fff; padding: 2rem 1rem; text-align: center; }
-        main { max-width: 900px; margin: 2rem auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 2rem; }
-        h1 { margin-top: 0; }
-        .profiles { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
-        .profile { background: #f0f4f8; border-radius: 8px; padding: 1.5rem; flex: 1 1 250px; min-width: 220px; box-shadow: 0 1px 4px #0001; text-align: center; }
-        .profile img { border-radius: 50%; width: 90px; height: 90px; object-fit: cover; margin-bottom: 1rem; }
-        @media (max-width: 600px) { .profiles { flex-direction: column; } }
+        :root {
+            --primary: #1a2233;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-secondary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Founders Section */
+        .founders {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .founder-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .founder-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .founder-card .title {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .founder-card .bio {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .services-grid,
+            .founders-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card,
+            .founder-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Steel Stratus</h1>
-        <p>Cloud Solutions for Modern Business</p>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">SteelStratus</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#founders">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <main>
-        <section>
-            <h2>About Steel Stratus</h2>
-            <p>Steel Stratus delivers robust, scalable, and secure cloud solutions tailored for your business. Our team brings decades of experience in cloud architecture, automation, and digital transformation.</p>
-        </section>
-        <section>
-            <h2>Our Team</h2>
-            <div class="profiles">
-                <div class="profile" id="hugh-profile">
-                    <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="Hugh Brien">
-                    <h3>Hugh Brien</h3>
-                    <p>Co-Founder & Cloud Architect</p>
-                    <div class="bio"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Observability & Platform Engineering Experts</h1>
+            <p>Empowering enterprises with cutting-edge observability solutions, cloud-native architecture, and platform engineering excellence.</p>
+            <a href="#services" class="cta-button">Explore Our Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header scroll-animate">
+                <h2>Our Expertise</h2>
+                <p>We specialize in comprehensive observability and platform engineering solutions that drive business success in the modern cloud-native landscape.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Platform Engineering</h3>
+                    <p>Build robust, scalable platforms that accelerate development teams and improve developer experience with modern tooling and automation.</p>
                 </div>
-                <div class="profile" id="darrell-profile">
-                    <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="Darrell Dunn">
-                    <h3>Darrell Dunn</h3>
-                    <p>Co-Founder & Solutions Engineer</p>
-                    <div class="bio"></div>
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Scale & Kubernetes</h3>
+                    <p>Design and implement cloud-native architectures that scale seamlessly across Kubernetes clusters and multi-cloud environments.</p>
+                </div>
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Observability Platforms</h3>
+                    <p>Expert implementation and optimization of AppDynamics, Dynatrace, DataDog, New Relic, and Instana for comprehensive monitoring.</p>
+                </div>
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security & Logs</h3>
+                    <p>Implement enterprise-grade security solutions and centralized logging strategies for comprehensive threat detection and compliance.</p>
+                </div>
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Performance Optimization</h3>
+                    <p>Optimize application performance, reduce latency, and improve user experience through advanced monitoring and tuning.</p>
+                </div>
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>DevOps & Automation</h3>
+                    <p>Streamline development workflows with CI/CD pipelines, infrastructure as code, and automated deployment strategies.</p>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section id="founders" class="founders">
+        <div class="container">
+            <div class="section-header scroll-animate">
+                <h2>Meet Our Founders</h2>
+                <p>Industry veterans with decades of combined experience in observability, platform engineering, and cloud-native technologies.</p>
+            </div>
+            <div class="founders-grid">
+                <div class="founder-card scroll-animate">
+                    <div class="founder-avatar">HB</div>
+                    <h3>Hugh Brien</h3>
+                    <div class="title">Co-Founder & Observability Expert</div>
+                    <div class="bio">Expert in all things Observability with experience at Wily Technology, CA APM, AppDynamics, Instana, Komodor, Gremlin, Cisco, Splunk, and Dynatrace.</div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/hughbrien/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/hughbrien" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://hughbrien.com/" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+                <div class="founder-card scroll-animate">
+                    <div class="founder-avatar">MO</div>
+                    <h3>Mike Oberlin</h3>
+                    <div class="title">Co-Founder & Platform Engineer</div>
+                    <div class="bio">Seasoned platform engineer with deep expertise in cloud-native architectures, Kubernetes, and enterprise-scale infrastructure solutions.</div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/mike-oberlin-0a8777/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="founder-card scroll-animate">
+                    <div class="founder-avatar">DD</div>
+                    <h3>Darrell Dunn</h3>
+                    <div class="title">Co-Founder & Solutions Architect</div>
+                    <div class="bio">Solutions architect with a passion for building resilient and efficient cloud systems, specializing in DevOps and cloud-native technologies.</div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/jdarrelldunn/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/darrelldunn99" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="founder-card scroll-animate">
+                    <div class="founder-avatar">HC</div>
+                    <h3>Henry Campbell</h3>
+                    <div class="title">Co-Founder & Cloud Architect</div>
+                    <div class="bio">Cloud architect with extensive experience in designing and implementing scalable, secure, and high-performance cloud solutions.</div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/henrycampbell/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/henrycampbell24" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <h3>SteelStratus</h3>
+            <p>Empowering enterprises with cutting-edge observability and platform engineering solutions.</p>
+            <div class="footer-links">
+                <a href="#services">Services</a>
+                <a href="#founders">Team</a>
+                <a href="mailto:contact@steelstratus.com">Contact</a>
+            </div>
+            <p>&copy; 2024 SteelStratus. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="main.js"></script>
 </body>
 </html> 
