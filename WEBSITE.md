@@ -2,15 +2,6 @@
 
 Create an outstanding website for SteelStratus.com.  The current version : https://steelstratus.com/  
 
-The SteelStratus Team are experts in Observability, Performance and Availablity and Platform Engineering
-Specialties includes : 
-- Platform Engineering
-- Cloud Scale and Hypercalse, Kubernetes, Cloud Native
-- Logs
-- Security 
-- All Observability platforms : AppDynamics, Dynatrace, DataDog, New Relic and Instana
-
-
 The Founders are : 
 
 - Hugh Brien 
@@ -24,6 +15,19 @@ The Founders are :
 - Henry Campbell
   - https://www.linkedin.com/in/henrycampbell/
   - https://github.com/henrycampbell24
+
+  
+# Services 
+The SteelStratus Team are experts in Observability, Performance and Availablity and Platform Engineering
+Specialties includes : 
+- Platform Engineering
+- Cloud Scale and Hypercalse, Kubernetes, Cloud Native
+- Logs
+- Security 
+- All Observability platforms : AppDynamics, Dynatrace, DataDog, New Relic and Instana
+
+
+
 
 # Prompt for building webite.  
 
